@@ -1,0 +1,17 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+!terraform.tfvars.example
+crash.log
+crash.*.log
+.terraform.lock.hcl
+
+# SSH keys si générées dans le projet
+*.pem
+*.pub
+
+# OS
+.DS_Store
+Thumbs.db
