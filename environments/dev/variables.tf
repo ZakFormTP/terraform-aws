@@ -69,3 +69,9 @@ variable "instance_name" {
   type        = string
   default     = "debian-dev"
 }
+
+variable "nom_utilisateur" {
+  type        = string
+  description = "Nom de l'utilisateur pour l'environnement dev"
+  default     = "mon_utilisateur_dev"
+}

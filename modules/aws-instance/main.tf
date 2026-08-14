@@ -53,12 +53,18 @@ resource "aws_security_group" "Serveur-GS" {
 
 resource "aws_instance" "EC2project" {
 
+  # Remplacement par templatefile avec le nouveau chemin et les variables à injecter
+  user_data = templatefile("${path.module}/templates/cloud-init.tpl", {
+    nom_utilisateur = "zak"
+    ssh_public_key  = var.ssh_public_key
+    # ssh_public_key  = aws_key_pair.deployer.public_key
+  })
+
   key_name                    = var.key_name
   ami                         = var.ami_id
   instance_type               = var.instance_type
   vpc_security_group_ids      = [aws_security_group.Serveur-GS.id]
   subnet_id                   = aws_subnet.reseau.id
   associate_public_ip_address = true
-
 
 }

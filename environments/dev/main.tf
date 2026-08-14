@@ -21,7 +21,7 @@ resource "local_file" "ssh_key" {
 module "ec2-dev" {
   source = "../../modules/aws-instance"
 
-  key_name          = aws_key_pair.deployer.key_name
+  
   ami_id            = var.ami_id
   instance_type     = var.instance_type
   instance_name     = var.instance_name
@@ -30,6 +30,10 @@ module "ec2-dev" {
   availability_zone = var.availability_zone
   igw_name          = var.igw_name
   sg_name           = var.sg_name
+  key_name          = aws_key_pair.deployer.key_name
+  nom_utilisateur   = var.nom_utilisateur
+
+  ssh_public_key  = aws_key_pair.deployer.public_key
 
 }
 

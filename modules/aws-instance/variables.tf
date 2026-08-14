@@ -44,10 +44,6 @@ variable "key_name" {
   description = "Le nom de la paire de clés AWS à associer à l'instance"
 }
 
-
-
-
-
 variable "ami_id" {
   description = "ID de l'AMI Debian 12/13"
   type        = string
@@ -64,4 +60,14 @@ variable "instance_name" {
   description = "Nom (tag Name) de l'instance"
   type        = string
   # default     = "debian-dev"
+}
+
+variable "nom_utilisateur" {
+  type        = string
+  description = "Le nom de l'utilisateur à créer via cloud-init"
+}
+
+variable "ssh_public_key" {
+  type        = string
+  description = "Le contenu textuel de la clé publique SSH"
 }
