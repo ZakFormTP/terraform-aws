@@ -23,9 +23,9 @@ variable "vpc_cidr" {
 }
 
 variable "subnet_cidr" {
-    description = "CIDR block du subnet"
-    type        = string
-    default     = "192.168.1.0/24"
+  description = "CIDR block du subnet"
+  type        = string
+  default     = "192.168.1.0/24"
 }
 
 variable "availability_zone" {
@@ -35,9 +35,9 @@ variable "availability_zone" {
 }
 
 variable "igw_name" {
-    description = "Nom (tag) de l'Internet Gateway"
-    type        = string
-    default     = "Passerelle"
+  description = "Nom (tag) de l'Internet Gateway"
+  type        = string
+  default     = "Passerelle"
 
 }
 

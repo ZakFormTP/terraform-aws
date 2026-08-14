@@ -1,7 +1,7 @@
 variable "vpc_cidr" {
-    description = "CIDR block du VPC"
-    type        = string
-    # default     = "192.168.1.0/24"
+  description = "CIDR block du VPC"
+  type        = string
+  # default     = "192.168.1.0/24"
 }
 
 # variable "vpc_name" {
@@ -10,36 +10,39 @@ variable "vpc_cidr" {
 # }
 
 variable "subnet_cidr" {
-    description = "CIDR block du subnet"
-    type        = string
-    # default     = "192.168.1.0/24"
+  description = "CIDR block du subnet"
+  type        = string
+  # default     = "192.168.1.0/24"
 }
 
 variable "availability_zone" {
-    description = "Zone de disponibilité du subnet"
-    type        = string
-    # default     = "eu-west-3b"
+  description = "Zone de disponibilité du subnet"
+  type        = string
+  # default     = "eu-west-3b"
 }
 
 variable "igw_name" {
-    description = "Nom (tag) de l'Internet Gateway"
-    type        = string
+  description = "Nom (tag) de l'Internet Gateway"
+  type        = string
 
 }
 
 variable "route_destination_cidr" {
-    description = "CIDR de destination de la route (sortie internet)"
-    type        = string
-    default     = "0.0.0.0/0"
+  description = "CIDR de destination de la route (sortie internet)"
+  type        = string
+  default     = "0.0.0.0/0"
 }
 
 variable "sg_name" {
-    description = "Nom du security group"
-    type        = string
-    # default = "Acces-SSH-22"
+  description = "Nom du security group"
+  type        = string
+  # default = "Acces-SSH-22"
 }
 
-
+variable "key_name" {
+  type        = string
+  description = "Le nom de la paire de clés AWS à associer à l'instance"
+}
 
 
 
