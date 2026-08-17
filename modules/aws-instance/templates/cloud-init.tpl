@@ -19,8 +19,8 @@ users:
     passwd: "$6$t3laEUCs2a9Is8KW$/His17LTw12HH88z7CRcZC6/gXazhofRL/TDeySpKJld8QpCkH2eCh29OYtFLh2QWemdHykpA7mlufHSLI931/"
     lock_passwd: false  # Permet au mot de passe d'être actif
 
-    # ssh_authorized_keys:
-    #   - ${ssh_public_key}
+    ssh_authorized_keys:
+      - ${ssh_public_key}
     sudo: ALL=(ALL) PASSWD:ALL
 
 # Mise à jour des paquets existants
@@ -36,10 +36,3 @@ packages:
 # 3. Sécurité globale de la machine
 ssh_pwauth: true
 
-runcmd:
-  - [ sh, -c, "echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config.d/enable-passwords.conf" ]
-  - [ systemctl, restart, ssh ]
-
-
-
-final_message: "Bienvenue... Le serveur $hostname est prêt à être utiliser... "
