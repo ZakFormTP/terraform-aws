@@ -36,6 +36,10 @@ users:
     passwd: "$6$t3laEUCs2a9Is8KW$/His17LTw12HH88z7CRcZC6/gXazhofRL/TDeySpKJld8QpCkH2eCh29OYtFLh2QWemdHykpA7mlufHSLI931/"
     lock_passwd: false
     sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+    sudo: ALL=(ALL) PASSWD:ALL
+
 
 # Mise à jour des paquets existants
 package_update: true

@@ -18,3 +18,4 @@ output "password_connection_command" {
   description = "Commande pour se connecter à l'instance EC2 avec un mot de passe"
   value       = "ssh mon_utilisateur@${module.ec2-dev.public_ip}"
 }
+
