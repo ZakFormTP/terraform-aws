@@ -1,7 +1,0 @@
-aws_region     = "eu-west-3"
-cle_access     = "AKIA..."
-cle_private    = "xxxxxxxxxxxxxxxxxxxx"
-ami_id         = "ami-xxxxxxxxxxxxxxxxx"
-instance_type  = "t2.micro"
-key_name       = "ma-cle-ec2"
-instance_name  = "EC2project"

@@ -1,7 +1,7 @@
 #cloud-config
 
 # 1. Configuration de base du système
-hostname: Zak-Server
+hostname: AZA-Server
 timezone: Europe/Paris
 locale: fr_FR.UTF-8
 keyboard:
@@ -11,17 +11,31 @@ keyboard:
 # Utilisateurs à créer
 users:
   - name: zak
-    groups: [sudo, admin]
+    groups: sudo
     shell: /bin/bash
-    homedir: /home/zak
-
-    # Étape A : Ajoutez votre mot de passe chiffré (généré avec Python)
+    ssh_authorized_keys:
+      - ${zak_ssh_public_key}
     passwd: "$6$t3laEUCs2a9Is8KW$/His17LTw12HH88z7CRcZC6/gXazhofRL/TDeySpKJld8QpCkH2eCh29OYtFLh2QWemdHykpA7mlufHSLI931/"
-    lock_passwd: false  # Permet au mot de passe d'être actif
+    lock_passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
 
-    # ssh_authorized_keys:
-    #   - ${ssh_public_key}
-    sudo: ALL=(ALL) PASSWD:ALL
+  - name: aziz
+    groups: sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${aziz_ssh_public_key}
+    passwd: "$6$t3laEUCs2a9Is8KW$/His17LTw12HH88z7CRcZC6/gXazhofRL/TDeySpKJld8QpCkH2eCh29OYtFLh2QWemdHykpA7mlufHSLI931/"
+    lock_passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
+
+  - name: aya
+    groups: sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${aya_ssh_public_key}
+    passwd: "$6$t3laEUCs2a9Is8KW$/His17LTw12HH88z7CRcZC6/gXazhofRL/TDeySpKJld8QpCkH2eCh29OYtFLh2QWemdHykpA7mlufHSLI931/"
+    lock_passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
 
 # Mise à jour des paquets existants
 package_update: true
@@ -34,12 +48,9 @@ packages:
 
 
 # 3. Sécurité globale de la machine
-ssh_pwauth: true
+ssh_pwauth: false
 
 runcmd:
-  - [ sh, -c, "echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config.d/enable-passwords.conf" ]
-  - [ systemctl, restart, ssh ]
-
-
-
-final_message: "Bienvenue... Le serveur $hostname est prêt à être utiliser... "
+  - chmod 700 /home/aya
+  - chmod 700 /home/aziz
+  - chmod 700 /home/zak

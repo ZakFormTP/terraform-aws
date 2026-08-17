@@ -75,3 +75,18 @@ variable "nom_utilisateur" {
   description = "Nom de l'utilisateur pour l'environnement dev"
   default     = "mon_utilisateur_dev"
 }
+
+variable "aya_ssh_public_key" {
+  description = "clé plublique ssh de l'utilisateur Aya"
+  type        = string
+}
+
+variable "aziz_ssh_public_key" {
+  description = "clé plublique ssh de l'utilisateur Aziz"
+  type        = string
+}
+
+variable "zak_ssh_public_key" {
+  description = "clé plublique ssh de l'utilisateur Zak"
+  type        = string
+}

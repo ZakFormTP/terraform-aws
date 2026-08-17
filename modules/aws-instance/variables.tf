@@ -1,24 +1,21 @@
 variable "vpc_cidr" {
   description = "CIDR block du VPC"
   type        = string
-  # default     = "192.168.1.0/24"
 }
 
-# variable "vpc_name" {
-#     description = "Nom (tag) du VPC"
-#     type        = string
-# }
+variable "vpc_name" {
+    description = "Nom (tag) du VPC"
+    type        = string
+}
 
 variable "subnet_cidr" {
   description = "CIDR block du subnet"
   type        = string
-  # default     = "192.168.1.0/24"
 }
 
 variable "availability_zone" {
   description = "Zone de disponibilité du subnet"
   type        = string
-  # default     = "eu-west-3b"
 }
 
 variable "igw_name" {
@@ -36,30 +33,22 @@ variable "route_destination_cidr" {
 variable "sg_name" {
   description = "Nom du security group"
   type        = string
-  # default = "Acces-SSH-22"
-}
-
-variable "key_name" {
-  type        = string
-  description = "Le nom de la paire de clés AWS à associer à l'instance"
 }
 
 variable "ami_id" {
   description = "ID de l'AMI Debian 12/13"
   type        = string
-  # default     = "ami-03dbc12aeff16b2d4"
 }
 
 variable "instance_type" {
   description = "Type d'instance EC2"
   type        = string
-  # default     = "t3.micro"
 }
 
 variable "instance_name" {
   description = "Nom (tag Name) de l'instance"
   type        = string
-  # default     = "debian-dev"
+  default     = "debian-dev"
 }
 
 variable "nom_utilisateur" {
@@ -67,7 +56,18 @@ variable "nom_utilisateur" {
   description = "Le nom de l'utilisateur à créer via cloud-init"
 }
 
-variable "ssh_public_key" {
+variable "aya_ssh_public_key" {
+  description = "clé plublique ssh de l'utilisateur Aya"
   type        = string
-  description = "Le contenu textuel de la clé publique SSH"
 }
+
+variable "aziz_ssh_public_key" {
+  description = "clé plublique ssh de l'utilisateur Aziz"
+  type        = string
+}
+
+variable "zak_ssh_public_key" {
+  description = "clé plublique ssh de l'utilisateur Zak"
+  type        = string
+}
+

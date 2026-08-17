@@ -13,8 +13,8 @@ output "test_account_id" {
   value = data.aws_caller_identity.current.account_id
 }
 
-# Affiche la commande SSH complète prête à l'emploi
-output "ssh_connection_command" {
-  description = "Commande pour se connecter à l'instance EC2"
-  value       = "ssh -i ${local_file.ssh_key.filename} mon_utilisateur@${module.ec2-dev.public_ip}"
+# Affiche la commande de connexion complète prête à l'emploi - password
+output "password_connection_command" {
+  description = "Commande pour se connecter à l'instance EC2 avec un mot de passe"
+  value       = "ssh mon_utilisateur@${module.ec2-dev.public_ip}"
 }
