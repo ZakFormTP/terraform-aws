@@ -50,6 +50,7 @@ packages:
   - curl
   - nano
 
+# Testde la branche de travail AZA
 
 # 3. Sécurité globale de la machine
 ssh_pwauth: false
