@@ -54,12 +54,13 @@ resource "aws_security_group" "Serveur-GS" {
 resource "aws_instance" "EC2project" {
 
   # Remplacement par templatefile avec le nouveau chemin et les variables à injecter
-  user_data = templatefile("${path.module}/templates/cloud-init.tpl", {
-    aya_ssh_public_key  = var.aya_ssh_public_key
-    aziz_ssh_public_key  = var.aziz_ssh_public_key
-    zak_ssh_public_key  = var.zak_ssh_public_key
+ user_data = templatefile("${path.module}/templates/cloud-init.tpl", {
+    aziz_ssh_public_key = var.aziz_ssh_public_key
+    ansible_private_key = var.ansible_private_key
+    ansible_repo_url    = var.ansible_repo_url
   })
 
+ user_data_replace_on_change = true
 
   ami                         = var.ami_id
   instance_type               = var.instance_type

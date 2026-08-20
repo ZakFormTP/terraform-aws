@@ -19,7 +19,13 @@ variable "cle_private" {
 variable "vpc_cidr" {
   description = "CIDR block du VPC"
   type        = string
-  default     = "192.168.1.0/24"
+  default     = "192.168.0.0/16"
+}
+
+variable "vpc_name" {
+  description = "Nom (tag) du VPC"
+  type        = string
+  default     = "vpc-dev"
 }
 
 variable "subnet_cidr" {
@@ -76,17 +82,19 @@ variable "nom_utilisateur" {
   default     = "mon_utilisateur_dev"
 }
 
-variable "aya_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aya"
-  type        = string
-}
-
 variable "aziz_ssh_public_key" {
   description = "clé plublique ssh de l'utilisateur Aziz"
   type        = string
 }
 
-variable "zak_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Zak"
+variable "ansible_private_key" {
+  description = "Contenu de la cle privee de deploiement de l'utilisateur ansible"
   type        = string
+  sensitive   = true
+}
+
+variable "ansible_repo_url" {
+  description = "Depot Git des playbooks, en SSH"
+  type        = string
+  default     = "git@github.com:azizm-git/ansible-pull-config.git"
 }

@@ -56,18 +56,18 @@ variable "nom_utilisateur" {
   description = "Le nom de l'utilisateur à créer via cloud-init"
 }
 
-variable "aya_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aya"
-  type        = string
-}
-
 variable "aziz_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aziz"
+  description = "cle publique ssh de l'utilisateur Aziz"
   type        = string
 }
+variable "ansible_private_key" {
+  description = "Contenu de la cle privee de deploiement"
+  type        = string
+  sensitive   = true
+}
 
-variable "zak_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Zak"
+variable "ansible_repo_url" {
+  description = "Depot Git des playbooks, en SSH"
   type        = string
 }
 
