@@ -16,7 +16,6 @@ users:
     lock_passwd: false
     sudo: ALL=(ALL) NOPASSWD:ALL
 
-
   - name: ansible
     groups: sudo
     shell: /bin/bash
@@ -32,6 +31,7 @@ packages:
   - curl
   - nano
   - git
+  - ansible
 
 write_files:
   - path: /home/ansible/.ssh/id_ed25519
@@ -51,11 +51,9 @@ write_files:
         IdentityFile /home/ansible/.ssh/id_ed25519
         StrictHostKeyChecking no
 
-
 # 3. Sécurité globale de la machine
 ssh_pwauth: false
 
 runcmd:
   - chmod 700 /home/aziz
-  - apt-get install -y ansible
   - sudo -H -u ansible ansible-pull -U ${ansible_repo_url} site.yml
