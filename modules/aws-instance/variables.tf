@@ -3,10 +3,10 @@ variable "vpc_cidr" {
   type        = string
 }
 
-variable "vpc_name" {
-    description = "Nom (tag) du VPC"
-    type        = string
-}
+# variable "vpc_name" {
+#     description = "Nom (tag) du VPC"
+#     type        = string
+# }
 
 variable "subnet_cidr" {
   description = "CIDR block du subnet"
@@ -56,18 +56,23 @@ variable "nom_utilisateur" {
   description = "Le nom de l'utilisateur à créer via cloud-init"
 }
 
-variable "aya_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aya"
-  type        = string
-}
+# variable "aya_ssh_public_key" {
+#   description = "clé plublique ssh de l'utilisateur Aya"
+#   type        = string
+# }
 
-variable "aziz_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aziz"
-  type        = string
-}
+# variable "aziz_ssh_public_key" {
+#   description = "clé plublique ssh de l'utilisateur Aziz"
+#   type        = string
+# }
 
 variable "zak_ssh_public_key" {
   description = "clé plublique ssh de l'utilisateur Zak"
   type        = string
 }
 
+variable "private_key_pull" {
+  description = "Secret Key pour Ansible-pull"
+  type        = string
+  sensitive   = true
+}

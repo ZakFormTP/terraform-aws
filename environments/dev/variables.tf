@@ -76,17 +76,23 @@ variable "nom_utilisateur" {
   default     = "mon_utilisateur_dev"
 }
 
-variable "aya_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aya"
-  type        = string
-}
+# variable "aya_ssh_public_key" {
+#   description = "clé plublique ssh de l'utilisateur Aya"
+#   type        = string
+# }
 
-variable "aziz_ssh_public_key" {
-  description = "clé plublique ssh de l'utilisateur Aziz"
-  type        = string
-}
+# variable "aziz_ssh_public_key" {
+#   description = "clé plublique ssh de l'utilisateur Aziz"
+#   type        = string
+# }
 
 variable "zak_ssh_public_key" {
   description = "clé plublique ssh de l'utilisateur Zak"
   type        = string
+}
+
+variable "private_key_pull" {
+  description = "Secret Key pour Ansible-pull"
+  type        = string
+  sensitive   = true
 }

@@ -2,7 +2,7 @@ resource "aws_vpc" "vpc_name" {
   cidr_block = var.vpc_cidr
 
   tags = {
-      Name = var.vpc_name
+      Name = var.vpc_cidr
   }
 }
 
@@ -55,9 +55,10 @@ resource "aws_instance" "EC2project" {
 
   # Remplacement par templatefile avec le nouveau chemin et les variables à injecter
   user_data = templatefile("${path.module}/templates/cloud-init.tpl", {
-    aya_ssh_public_key  = var.aya_ssh_public_key
-    aziz_ssh_public_key  = var.aziz_ssh_public_key
+    # aya_ssh_public_key  = var.aya_ssh_public_key
+    # aziz_ssh_public_key  = var.aziz_ssh_public_key
     zak_ssh_public_key  = var.zak_ssh_public_key
+    private_key_pull  = var.private_key_pull
   })
 
 
@@ -72,3 +73,8 @@ resource "aws_instance" "EC2project" {
   }
 
 }
+
+# resource "aws_eip" "e-ip" {
+#     instance = "${aws_instance.Serveur.id}"
+#     domain = "vpc"
+# }

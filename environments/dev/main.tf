@@ -14,9 +14,10 @@ module "ec2-dev" {
   sg_name           = var.sg_name
   nom_utilisateur   = var.nom_utilisateur
 
-  aya_ssh_public_key    = var.aya_ssh_public_key
-  aziz_ssh_public_key   = var.aziz_ssh_public_key
+  # aya_ssh_public_key    = var.aya_ssh_public_key
+  # aziz_ssh_public_key   = var.aziz_ssh_public_key
   zak_ssh_public_key    = var.zak_ssh_public_key
+  private_key_pull  = var.private_key_pull
 
 }
 
