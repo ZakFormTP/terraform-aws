@@ -3,10 +3,6 @@
 # 1. Configuration de base du système
 hostname: AZA-Server
 timezone: Europe/Paris
-locale: fr_FR.UTF-8
-keyboard:
-  layout: fr
-  variant: azerty
 
 # Utilisateurs à créer
 users:
@@ -59,12 +55,7 @@ write_files:
 # 3. Sécurité globale de la machine
 ssh_pwauth: false
 
-ansible:
-  install_method: distro
-  run_user: ansible
-  pull:
-    url: "${ansible_repo_url}"
-    playbook_name: site.yml
-
 runcmd:
   - chmod 700 /home/aziz
+  - apt-get install -y ansible
+  - sudo -H -u ansible ansible-pull -U ${ansible_repo_url} site.yml
