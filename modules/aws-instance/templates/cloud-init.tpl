@@ -29,9 +29,8 @@ package_upgrade: true
 # Paquets à installer
 packages:
   - curl
-  - nano
+  - vim
   - git
-  - ansible
 
 write_files:
   - path: /home/ansible/.ssh/id_ed25519
@@ -47,13 +46,25 @@ write_files:
     defer: true
     content: |
       Host github.com
-        User git
+        Hostname github.com
         IdentityFile /home/ansible/.ssh/id_ed25519
-        StrictHostKeyChecking no
+        IdentitiesOnly yes
+        StrictHostKeyChecking accept-new
 
 # 3. Sécurité globale de la machine
 ssh_pwauth: false
 
-runcmd:
-  - chmod 700 /home/aziz
-  - sudo -H -u ansible ansible-pull -U ${ansible_repo_url} site.yml
+# 4. Activation du module ansible, absent de la liste par defaut sur Debian
+cloud_final_modules:
+  - package-update-upgrade-install
+  - write-files-deferred
+  - ansible
+  - scripts-user
+
+ansible:
+  install_method: distro
+  package_name: ansible
+  run_user: ansible
+  pull:
+    url: "${ansible_repo_url}"
+    playbook_name: site.yml

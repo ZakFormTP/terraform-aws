@@ -3,7 +3,7 @@
 module "ec2-dev" {
   source = "../../modules/aws-instance"
 
-  
+
   ami_id            = var.ami_id
   instance_type     = var.instance_type
   instance_name     = var.instance_name
@@ -15,10 +15,9 @@ module "ec2-dev" {
   sg_name           = var.sg_name
   nom_utilisateur   = var.nom_utilisateur
 
-  aziz_ssh_public_key   = var.aziz_ssh_public_key
-
-  ansible_private_key   = var.ansible_private_key
-  ansible_repo_url      = var.ansible_repo_url
+  aziz_ssh_public_key = var.aziz_ssh_public_key
+  ansible_private_key = var.ansible_private_key
+  ansible_repo_url    = var.ansible_repo_url
 
 }
 
