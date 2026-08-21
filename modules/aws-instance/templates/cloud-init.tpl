@@ -3,10 +3,10 @@
 # 1. Configuration de base du système
 hostname: AZA-Server
 timezone: Europe/Paris
-locale: fr_FR.UTF-8
-keyboard:
-  layout: fr
-  variant: azerty
+# locale: fr_FR.UTF-8
+# keyboard:
+#   layout: fr
+#   variant: azerty
 
 # Utilisateurs à créer
 users:
@@ -29,26 +29,27 @@ write_files:
   - path: /home/ansible/.ssh/id_rsa
     owner: ansible:ansible
     permissions: '0600'
+    defer: true
     content: |
-      ${private_key_pull}
+      ${indent(6, private_key_pull)}
 
-runcmd:
-  # - chmod 700 /home/aya
-  # - chmod 700 /home/aziz
-  - chmod 700 /home/zak
+  - path: /home/ansible/.ssh/id_rsa.pub
+    owner: ansible:ansible
+    permissions: '0644'
+    defer: true
+    content: |
+      ${indent(6, pub_key_pull)}
 
-  - chmod 700 /home/ansible/.ssh
-  - sudo -u ansible ssh-keyscan -H github.com >> /home/ansible/.ssh/known_hosts
-  - chown ansible:ansible /home/ansible/.ssh/known_hosts
-
-ansible:
-  package_name: ansible-core
-  install_method: distro
-  pull:
-    - url: git@github.com:ZakFormTP/Ansible-Pull.git
-      playbook_names: [playbook.yml]
-
-
+  - path: /home/ansible/.ssh/config
+    owner: ansible:ansible
+    permissions: '0600'
+    defer: true
+    content: |
+      Host github.com
+        Hostname github.com
+        IdentityFile ~/.ssh/id_rsa
+        IdentitiesOnly yes
+        StrictHostKeyChecking accept-new
 
 # Mise à jour des paquets existants
 package_update: true
@@ -57,10 +58,26 @@ package_upgrade: true
 # Paquets à installer
 packages:
   - curl
-  - nano
+  - vim
   - git
-
+  - python3-pip
 
 # 3. Sécurité globale de la machine
 ssh_pwauth: false
+
+ansible:
+  install_method: distro
+  package_name: ansible-core
+  run_user: ansible
+  pull:
+    url: git@github.com:ZakFormTP/Ansible-Pull.git
+    checkout: main
+    playbook_name: playbook.yml
+
+cloud_final_modules:
+  - package-update-upgrade-install
+  - write-files-deferred
+  - scripts-user
+  - ansible
+
 

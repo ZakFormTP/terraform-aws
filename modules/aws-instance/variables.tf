@@ -71,6 +71,12 @@ variable "zak_ssh_public_key" {
   type        = string
 }
 
+variable "pub_key_pull" {
+  description = "Secret Key pour Ansible-pull"
+  type        = string
+  sensitive   = true
+}
+
 variable "private_key_pull" {
   description = "Secret Key pour Ansible-pull"
   type        = string

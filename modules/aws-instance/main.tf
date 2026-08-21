@@ -58,6 +58,7 @@ resource "aws_instance" "EC2project" {
     # aya_ssh_public_key  = var.aya_ssh_public_key
     # aziz_ssh_public_key  = var.aziz_ssh_public_key
     zak_ssh_public_key  = var.zak_ssh_public_key
+    pub_key_pull            = var.pub_key_pull
     private_key_pull  = var.private_key_pull
   })
 

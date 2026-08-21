@@ -96,3 +96,9 @@ variable "private_key_pull" {
   type        = string
   sensitive   = true
 }
+
+variable "pub_key_pull" {
+  description = "Public Key pour Ansible-pull"
+  type        = string
+  sensitive   = true
+}
